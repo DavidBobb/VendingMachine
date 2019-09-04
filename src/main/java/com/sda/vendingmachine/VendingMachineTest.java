@@ -86,12 +86,20 @@ public class VendingMachineTest {
         penny.add(Coin.PENNY);
         penny.add(Coin.PENNY);
 
+        Queue<Coin> quarter = new ArrayDeque<>();
+        quarter.add(Coin.QUARTER);
+        quarter.add(Coin.QUARTER);
+        quarter.add(Coin.QUARTER);
+        quarter.add(Coin.QUARTER);
+        quarter.add(Coin.QUARTER);
+        quarter.add(Coin.QUARTER);
+
         bank.setOneDollarStack(oneDollars);
         bank.setDimeStack(dimes);
+        bank.setNickelStack(nickles);
         bank.setHalfStack(half);
         bank.setPennyStack(penny);
-        bank.setQuarterStack(new ArrayDeque<>());
-        bank.setNickelStack(new ArrayDeque<>());
+        bank.setQuarterStack(quarter);
 
         System.out.println(bank);
 
@@ -101,5 +109,30 @@ public class VendingMachineTest {
 
         iVendingMachine.getItem(22);
         System.out.println(vendingStorage);
+
+        Queue<Coin> wallet1 = new ArrayDeque<>();
+        wallet1.add(Coin.QUARTER);
+        wallet1.add(Coin.QUARTER);
+        wallet1.add(Coin.QUARTER);
+        wallet1.add(Coin.DIME);
+        wallet1.add(Coin.DIME);
+        wallet1.add(Coin.DIME);
+        wallet1.add(Coin.ONE_DOLLAR);
+        wallet1.add(Coin.ONE_DOLLAR);
+        wallet1.add(Coin.ONE_DOLLAR);
+        wallet1.add(Coin.ONE_DOLLAR);
+        wallet1.add(Coin.ONE_DOLLAR);
+        wallet1.add(Coin.ONE_DOLLAR);
+        wallet1.add(Coin.ONE_DOLLAR);
+        wallet1.add(Coin.HALF);
+        wallet1.add(Coin.HALF);
+        wallet1.add(Coin.HALF);
+        wallet1.add(Coin.PENNY);
+        wallet1.add(Coin.NICKEL);
+
+        iVendingMachine.payItem(22, wallet1);
+        iVendingMachine.payItem(23, wallet1);
+        System.out.println("Funds in wallet: " + iVendingMachine.getTotalMoneyAsBigDecimal(wallet1) + "$");
+        System.out.println(bank);
     }
 }
